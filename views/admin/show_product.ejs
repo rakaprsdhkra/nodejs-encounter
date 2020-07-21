@@ -1,0 +1,70 @@
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Data Active ECommerce Products</h3>
+  
+                <div class="box-tools pull-right">
+                  <div class="input-group input-group-sm">
+                    <a href="/ecommerce/admin/add_product">
+                      <button type="button" class="btn btn-block btn-success"><i class="fa fa-plus"></i>&nbsp;Add Product</button>
+                    </a>
+                    <!-- <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"> 
+                    <div class="input-group-btn">
+                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-warning -->
+              
+              <!-- /.box-alert -->
+            
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                  <tr>
+                    <th>ID</th>
+                    <th>Gambar Produk</th>
+                    <th>Nama Produk</th>
+                    <th>Harga Produk</th>
+                    <th>Create Date</th>
+                    <th width="400">Description</th>
+                    <th width="100">Modify</th>
+                  </tr>
+                  <%
+                    if (data.length) {
+                      for (var i=0; i < data.length; i++) {
+                  %>
+                  <tr>
+                    <td><%= data[i].id_product %></td>
+                    <td><img style="padding-top: 20px" src="/public/images/<%= data[i].gambar_produk %>" width="70" height="70" /></td>
+                    <td><%= data[i].nama_produk %></td>
+                    <td><%= data[i].harga_product %></td>
+                    <td><%= data[i].createdate %></td>
+                    <td><%= data[i].des_product.substring(0,150) %>...<a href="#">read more</a></td>
+                    <td>
+                      <a class="btn btn-warning" href="/ecommerce/admin/edit_product/<%= data[i].id_product %>"><i class="glyphicon glyphicon-edit"></i></a>                      
+                      <a class="btn btn-danger" href="/ecommerce/admin/delete_product/<%= data[i].id_product %>" onclick="return confirm('Are you sure want to delete id_product='+ <%= data[i].id_product %> + '?')"><i class="glyphicon glyphicon-trash"></i></a>
+                    </td>
+                  </tr>    
+                  <%
+                      }
+                    }
+                  %>                            
+                </table>
+              </div>
+              <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                  <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                  </ul>
+                </div>
+            </div>
+            <!-- /.box -->
+          </div>
+        </div>
